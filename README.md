@@ -13,8 +13,11 @@ Install PostgreSQL on your local machine, follow below link
   - [Install postgresql](https://www.postgresql.org/download/)
 
 ### Configuration
-Download shared compressed file and then follow instruction below
-
+Clone the repository or Download zip folder
+```shell
+git clone git@github.com:shashank76/perchwell_assignment.git
+```
+and then follow below instructions to setup this project on local machine
 ```shell
 cd perchwell_assignment
 bundle install
