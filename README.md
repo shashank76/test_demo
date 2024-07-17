@@ -1,35 +1,47 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Getting started
 
 Things you may want to cover:
 
-* Ruby version -> '2.7.1'
-* Rails version -> '~> 6.0.6'
+Ruby version -> '2.7.1'
+Rails version -> '~> 6.0.6'
 
-* System dependencies
-* Install ruby and rails on you local machine, if already installed skip this step
-* https://mac.install.guide/rubyonrails/
-* Install PostgreSQL on your local machine, follow below link
-* https://www.postgresql.org/download/
+### System dependencies
+Install ruby and rails on you local machine, if already installed skip this step
+  - [Install Rails](https://mac.install.guide/rubyonrails/)
 
-* Configuration
-* Download shared compressed file and then follow instruction below
-* cd perchwell_assignment
-* bundle install
+Install PostgreSQL on your local machine, follow below link
+  - [Install postgresql](https://www.postgresql.org/download/)
 
-* Database creation & migration
-* rails db:create db:migrate db:seed
+### Configuration
+Download shared compressed file and then follow instruction below
 
-* How to run the test suite
-* bundle exec rspec
+```shell
+cd perchwell_assignment
+bundle install
+```
+### Database creation & migration
+```shell
+rails db:create db:migrate db:seed
+```
 
-* rails server
+### How to run the test suite
+```shell
+bundle exec rspec
+```
+### How to run the rails server on local machine
 
-and after check response as below
-http://localhost:3000/apis/v1/buildings.json?page=1&per_page=10
+```shell
+rails server
+```
+If you wanted to run this server for specific port and production environment on your machine IP
+```shell
+rails server -p 3000 -e production
+```
+
+and after running server, you can check response as below
+- [Local Machine server link](http://localhost:3000/apis/v1/buildings.json?page=1&per_page=10)
+
 
 RESTful APIs published on below link for request and response example
-https://documenter.getpostman.com/view/37042598/2sA3kRL4wq
-* ...
+- [Postman APIs Collection](https://documenter.getpostman.com/view/37042598/2sA3kRL4wq)
+
