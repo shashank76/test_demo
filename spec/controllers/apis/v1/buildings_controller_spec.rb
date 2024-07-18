@@ -14,8 +14,8 @@ RSpec.describe Apis::V1::BuildingsController, type: :controller do
     end
 
     it 'returns a list of buildings' do
-      expect(JSON.parse(response.body)).not_to be_empty
-      expect(JSON.parse(response.body).size).to eq(3)
+      expect(JSON.parse(response.body)['buildings']).not_to be_empty
+      expect(JSON.parse(response.body)['buildings'].size).to eq(3)
     end
   end
 
@@ -52,7 +52,7 @@ RSpec.describe Apis::V1::BuildingsController, type: :controller do
 
       it 'returns the created building' do
         post :create, params: valid_attributes, format: :json
-        expect(JSON.parse(response.body)['address']).to eq('123 Test St NY 100001')
+        expect(JSON.parse(response.body)['building']['address']).to eq('123 Test St NY 100001')
       end
     end
 
@@ -121,7 +121,7 @@ RSpec.describe Apis::V1::BuildingsController, type: :controller do
 
       it 'returns the updated building' do
         patch :update, params: valid_attributes, format: :json
-        expect(JSON.parse(response.body)['address']).to eq('456 Updated St NY 100001')
+        expect(JSON.parse(response.body)['building']['address']).to eq('456 Updated St NY 100001')
       end
     end
 

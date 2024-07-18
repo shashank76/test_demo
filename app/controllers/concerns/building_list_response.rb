@@ -8,12 +8,19 @@ module BuildingListResponse
 
   # Transforming a list of buildings data into a JSON structure
   def transformed_response_parameters
-    @buildings.map { |building| transform_building(building) }
+    {
+      status: "success",
+      buildings: @buildings.map { |building| transform_building(building) }
+    }
   end
 
   # Transforming a single building data into a JSON structure
   def transformed_single_building_parameters
-    transform_building(@building)
+    {
+      status: "success",
+      building: transform_building(@building)
+    }
+
   end
 
   private

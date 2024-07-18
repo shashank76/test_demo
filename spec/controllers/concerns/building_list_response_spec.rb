@@ -32,8 +32,9 @@ RSpec.describe BuildingListResponse do
   describe '#transformed_response_parameters' do
     it 'transforms a list of buildings' do
       transformed_parameters = dummy_controller.send(:transformed_response_parameters)
-      expect(transformed_parameters.size).to eq(3)
-      expect(transformed_parameters.first.keys).to match_array([:id, :address, :client_name])
+      expect(transformed_parameters[:status]).to eq("success")
+      expect(transformed_parameters[:buildings].size).to eq(3)
+      expect(transformed_parameters[:buildings].first.keys).to match_array([:id, :address, :client_name])
     end
   end
 
@@ -46,7 +47,8 @@ RSpec.describe BuildingListResponse do
 
     it 'transforms a single building' do
       transformed_parameters = dummy_controller.send(:transformed_single_building_parameters)
-      expect(transformed_parameters.keys).to match_array([:id, :address, :client_name])
+      expect(transformed_parameters[:status]).to eq("success")
+      expect(transformed_parameters[:building].keys).to match_array([:id, :address, :client_name])
     end
   end
 
