@@ -5,10 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-BuildingCustomFieldValue.delete_all
-Building.delete_all
-ClientCustomField.delete_all
-Client.delete_all
+
 # Creating 5 clients with only dummy names
 client1 = Client.create!(name: 'John Doe')
 client2 = Client.create!(name: 'Jane Doe')
@@ -44,7 +41,7 @@ client5_custom_field_5 = client5.client_custom_fields.create!(
 )
 
 
-# Creating Buildings with custom fields
+# Creating Buildings with building custom fields values
 client1.buildings.create!(
   address: "123 Main St", state: "NY", zip: "10001",
   building_custom_field_values_attributes: [

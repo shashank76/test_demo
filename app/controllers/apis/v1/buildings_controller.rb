@@ -1,5 +1,5 @@
 class Apis::V1::BuildingsController < ApplicationController
-  # Include the BuildingTransformer concern
+  # Include the Building data transformation concern
   include BuildingListResponse
 
   #These filters are written as private method below

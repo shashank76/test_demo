@@ -1,6 +1,7 @@
 module BuildingListResponse
   extend ActiveSupport::Concern
 
+  # Make methods available as helper methods in controllers
   included do
     helper_method :transformed_response_parameters, :transformed_single_building_parameters
   end

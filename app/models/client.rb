@@ -1,8 +1,8 @@
 class Client < ApplicationRecord
-  #Validations
+  #validations
   validates :name, presence: true
 
-  #Associations
+  #associations
   has_many :buildings, dependent: :destroy
   has_many :client_custom_fields, dependent: :destroy
 end

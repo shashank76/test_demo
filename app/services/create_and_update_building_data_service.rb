@@ -16,12 +16,10 @@ class CreateAndUpdateBuildingDataService
     else
       create_building
     end
-    @errors.empty?
   rescue StandardError => e
     Rails.logger.error("Error in CreateAndUpdateBuildingDataService: #{e.message}")
     Rails.logger.error(e.backtrace.join("\n"))
     @errors << e.message
-    false
   end
 
   private
@@ -31,7 +29,6 @@ class CreateAndUpdateBuildingDataService
       @building.save!
       create_or_update_custom_fields
     end
-    @building
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error("Error in CreateAndUpdateBuildingDataService: #{e.message}")
     Rails.logger.error(e.backtrace.join("\n"))
@@ -45,7 +42,6 @@ class CreateAndUpdateBuildingDataService
       @building.update!(@building_params)
       create_or_update_custom_fields
     end
-    @building
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error("Error in CreateAndUpdateBuildingDataService: #{e.message}")
     Rails.logger.error(e.backtrace.join("\n"))
