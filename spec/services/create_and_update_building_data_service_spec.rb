@@ -50,8 +50,8 @@ RSpec.describe CreateAndUpdateBuildingDataService, type: :service do
         allow(building).to receive(:save!).and_raise(StandardError, 'Test error')
       end
 
-      it 'returns false' do
-        expect(service.create_or_update).to be_falsey
+      it 'returns error message' do
+        expect(service.create_or_update).to eq ["Test error"]
       end
 
       it 'adds the error message to errors' do
