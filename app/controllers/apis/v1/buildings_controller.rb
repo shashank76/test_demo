@@ -16,24 +16,24 @@ class Apis::V1::BuildingsController < ApplicationController
   # POST /buildings.json
   # Create building data
   def create
-    create_update_building_service.create_or_update
-    if create_update_building_service.building.persisted?
-      @building = create_update_building_service.building
-      render json: transformed_single_building_parameters, status: :created
+    building_data_service.create_or_update
+    if building_data_service.building.persisted?
+      @building = building_data_service.building
+      render json: transformed_building_parameters, status: :created
     else
-      render json: create_update_building_service.errors, status: :unprocessable_entity
+      render json: building_data_service.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH /buildings.json
   # Update building data
   def update
-    create_update_building_service.create_or_update
-    if create_update_building_service.errors.empty?
-      @building = create_update_building_service.building
-      render json: transformed_single_building_parameters, status: :ok
+    building_data_service.create_or_update
+    if building_data_service.errors.empty?
+      @building = building_data_service.building
+      render json: transformed_building_parameters, status: :ok
     else
-      render json: create_update_building_service.errors, status: :unprocessable_entity
+      render json: building_data_service.errors, status: :unprocessable_entity
     end
   end
 
@@ -55,13 +55,14 @@ class Apis::V1::BuildingsController < ApplicationController
   end
 
   # Calling Building Data Service to Create and update custom field data
-  def create_update_building_service
-    unless @building
-      @building = @client.buildings.new(building_params)
-    end
-    @create_update_building_service ||= CreateAndUpdateBuildingDataService.new(
-      building_params, custom_fields_params, @building
+  def building_data_service
+    @building_data_service ||= CreateAndUpdateBuildingDataService.new(
+      building_params, custom_fields_params, building_data
     )
+  end
+
+  def building_data
+    @building ||= @client.buildings.new(building_params)
   end
 
   # Memoizes the result of the query to avoid fetching data multiple times
@@ -70,7 +71,6 @@ class Apis::V1::BuildingsController < ApplicationController
       client: [:client_custom_fields], building_custom_field_values: []
     )
   end
-
 
   #permiting parameters for create and update payload
   def building_params

@@ -3,7 +3,8 @@ class ClientCustomField < ApplicationRecord
   belongs_to :client
   has_many :building_custom_field_values, dependent: :destroy
 
-  #custom field type enum values
+  # custom field type enum values, using 'list' as name for enum type custom field type (given in document)
+  # because enum is reserved keyword
   enum field_type: %i(numeric freeform list)
 
   #validations

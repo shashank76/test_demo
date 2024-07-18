@@ -3,7 +3,7 @@ module BuildingListResponse
 
   # Make methods available as helper methods in controllers
   included do
-    helper_method :transformed_response_parameters, :transformed_single_building_parameters
+    helper_method :transformed_response_parameters, :transformed_building_parameters
   end
 
   # Transforming a list of buildings data into a JSON structure
@@ -15,7 +15,7 @@ module BuildingListResponse
   end
 
   # Transforming a single building data into a JSON structure
-  def transformed_single_building_parameters
+  def transformed_building_parameters
     {
       status: "success",
       building: transform_building(@building)

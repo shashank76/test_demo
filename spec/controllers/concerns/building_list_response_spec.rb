@@ -38,7 +38,7 @@ RSpec.describe BuildingListResponse do
     end
   end
 
-  describe '#transformed_single_building_parameters' do
+  describe '#transformed_building_parameters' do
     let(:building) { buildings.first }
 
     before do
@@ -46,9 +46,9 @@ RSpec.describe BuildingListResponse do
     end
 
     it 'transforms a single building' do
-      transformed_parameters = dummy_controller.send(:transformed_single_building_parameters)
+      transformed_parameters = dummy_controller.send(:transformed_building_parameters)
       expect(transformed_parameters[:status]).to eq("success")
-      expect(transformed_parameters[:building].keys).to match_array([:id, :address, :client_name])
+        expect(transformed_parameters[:building].keys).to match_array([:id, :address, :client_name])
     end
   end
 
