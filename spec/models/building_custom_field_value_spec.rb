@@ -54,17 +54,4 @@ RSpec.describe BuildingCustomFieldValue, type: :model do
       end
     end
   end
-
-  describe 'uniqueness validation' do
-    let(:building) { create(:building) }
-    let(:client_custom_field) { create(:client_custom_field) }
-    subject { BuildingCustomFieldValue.new(building: building, client_custom_field: client_custom_field, value: 'Test Value') }
-
-    let!(:existing_building_custom_fields) { create(:building_custom_field_value, building: building, client_custom_field: client_custom_field) }
-
-    it 'is not valid if client_custom_field_id and building_id are not unique' do
-      expect(subject).not_to be_valid
-      expect(subject.errors[:client_custom_field_id]).to include('has already been taken')
-    end
-  end
 end

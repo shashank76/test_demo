@@ -33,11 +33,10 @@ module BuildingListResponse
 
   # format custom field values
   def custom_field_values(building)
-    building_custom_values = {}
-    building.building_custom_field_values.each do |val|
-      building_custom_values[val.client_custom_field_id] = val.value
-    end
-
+    building_custom_values = building.building_custom_field_values.pluck(
+      :client_custom_field_id, :value
+    ).to_h
+    
     client_custom_fields = building.client.client_custom_fields
     client_custom_fields.each_with_object({}) do |client_custom_field, hash|
       hash[client_custom_field.field_name] = building_custom_values[client_custom_field.id] || ''
