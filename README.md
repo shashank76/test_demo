@@ -15,11 +15,11 @@ Install PostgreSQL on your local machine, follow below link
 ### Configuration
 Clone the repository or Download zip folder
 ```shell
-git clone git@github.com:shashank76/perchwell_assignment.git
+git clone git@github.com:shashank76/test_demo.git
 ```
 and then follow below instructions to setup this project on local machine
 ```shell
-cd perchwell_assignment
+cd test_demo
 bundle install
 ```
 ### Database creation & migration
@@ -44,7 +44,4 @@ rails server -p 3000 -e production
 and after running server, you can check response as below
 - [Local Machine server link](http://localhost:3000/apis/v1/buildings.json?page=1&per_page=10)
 
-
-RESTful APIs published on below link for request and response example
-- [Postman APIs Collection](https://documenter.getpostman.com/view/37042598/2sA3kRL4wq)
 
