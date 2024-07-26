@@ -67,9 +67,9 @@ class Apis::V1::BuildingsController < ApplicationController
 
   # Memoizes the result of the query to avoid fetching data multiple times
   def building_list
-    @building_list ||= Building.includes(
-      client: [:client_custom_fields], building_custom_field_values: []
-    )
+    @building_list ||= Building.includes(:building_custom_field_values,
+      client: [:client_custom_fields]
+    ).order('created_at desc')
   end
 
   #permiting parameters for create and update payload
